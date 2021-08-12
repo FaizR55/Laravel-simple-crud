@@ -21,7 +21,7 @@ class KaryawanController extends Controller
 
         $data = DB::table('karyawan')
                 ->join('divisi', 'divisi.id', '=', 'karyawan.division_id')
-                ->join('perusahaan', 'perusahaan.id', '=', 'karyawan.division_id')
+                ->join('perusahaan', 'perusahaan.id', '=', 'karyawan.perusahaan_id')
                 ->select('karyawan.*', 'divisi.id as d_id', 'divisi.nama_divisi',
                         'perusahaan.id as p_id', 'perusahaan.nama_perusahaan')
                 ->get();
@@ -65,9 +65,22 @@ class KaryawanController extends Controller
     public function edit($id)
     {
         // mengambil data pegawai berdasarkan id yang dipilih
-        $karyawan = DB::table('karyawan')->where('id',$id)->get();
+        $karyawan = DB::table('karyawan')
+        ->join('divisi', 'divisi.id', '=', 'karyawan.division_id')
+        ->join('perusahaan', 'perusahaan.id', '=', 'karyawan.perusahaan_id')
+        ->select('karyawan.*', 'divisi.id as d_id', 'divisi.nama_divisi',
+                'perusahaan.id as p_id', 'perusahaan.nama_perusahaan')
+        ->where('karyawan.id',$id)
+        ->get();
+
+        $data = DB::table('divisi')
+        ->get();
+
+        $data2 = DB::table('perusahaan')
+                ->get();
+
         // passing data pegawai yang didapat ke view edit.blade.php
-        return view('edit_karyawan',['karyawan' => $karyawan]);
+        return view('edit_karyawan')->with(compact('karyawan', 'data', 'data2'));
     }
 
     // update data pegawai

@@ -9,7 +9,9 @@
       <h3 class="card-title">Input Karyawan baru</h3>
     </div>
     <!-- /.card-header -->
+
     {{--dd($data)--}}
+
     <!-- form start -->
     <form action="/karyawan/store" method="POST">
     @csrf

@@ -20,6 +20,8 @@
     </div>
     @endif
 
+    {{-- {{ dd(get_defined_vars()) }} --}}
+
     @foreach ($karyawan as $k)
     <!-- form start -->
     <form action="/karyawan/update" method="POST">
@@ -34,14 +36,25 @@
           <label>Jenis Kelamin</label>
           <input type="text" class="form-control" name="jk" value="{{$k->jk}}">
         </div>
+
         <div class="form-group">
-          <label>ID Divisi</label>
-          <input type="text" class="form-control" name="division_id" value="{{$k->division_id}}">
+            <select name="division_id" class="form-control">
+                <option value="{{$k->division_id}}">{{ $k->nama_divisi }}</option>
+                @foreach ($data as $id)
+                    <option value="{{ $id->id }}">{{ $id->nama_divisi }}</option>
+                @endforeach
+            </select>
         </div>
+
         <div class="form-group">
-          <label>ID Perusahaan</label>
-          <input type="text" class="form-control" name="perusahaan_id" value="{{$k->perusahaan_id}}">
+            <select name="perusahaan_id" class="form-control">
+                <option value="{{$k->perusahaan_id}}">{{ $k->nama_perusahaan }}</option>
+                @foreach ($data2 as $id)
+                    <option value="{{ $id->id }}">{{ $id->nama_perusahaan }}</option>
+                @endforeach
+            </select>
         </div>
+
       </div>
       @endforeach
       <!-- /.card-body -->

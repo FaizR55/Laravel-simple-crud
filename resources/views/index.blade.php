@@ -20,7 +20,7 @@
         @endif
 
         <!-- /.card-header -->
-        {{--dd($data)--}}
+        {{-- {{dd($data)}} --}}
         <div class="card-body">
           <table id="example1" class="table table-bordered table-hover">
             <thead>
@@ -29,7 +29,7 @@
               <th>Nama Karyawan</th>
               <th>Jenis Kelamin</th>
               <th>Nama Divisi</th>
-              <th>ID Perusahaan</th>
+              <th>Nama Perusahaan</th>
               <th scope="col">&nbsp;</th>
               <th scope="col">&nbsp;</th>
             </tr>

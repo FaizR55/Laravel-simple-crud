@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class Divisi extends Migration
 {
@@ -17,6 +18,12 @@ class Divisi extends Migration
             $table->id('id');
             $table->string('nama_divisi');
         });
+
+        DB::table('divisi')->insert([
+            ['id' => '1', 'nama_divisi' => 'Divisi 1'],
+            ['id' => '2', 'nama_divisi' => 'Divisi 2'],
+            ['id' => '3', 'nama_divisi' => 'Divisi 3']
+        ]);
     }
 
     /**

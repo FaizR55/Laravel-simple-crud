@@ -2,6 +2,7 @@
 
 Laravel simple crud with database table relation and adminlte template
 
+- clone the repo
 - open cmd on file
 - php artisan serve
 - open in browser
